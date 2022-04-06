@@ -1,0 +1,51 @@
+* 1. Desgining the  database with following table by applying Primary key and Foreign key */
+
+--Create Customer table 
+Create table Customer(
+Id Int Primary key,
+FirstName nvarchar(40),
+LastName nvarchar(40),
+City nvarchar(40),
+Country nvarchar(40),
+Phone nvarchar(20),
+);
+
+-- Create index for customer  table 
+Create index IndexCustomerName on Customer(FirstName);
+
+--Create of Order table 
+Create table Orders(
+Id Int Primary key,
+OrderDate datetime,
+OrderNumber nvarchar(10),
+CustomerId int foreign key references [Customer](Id),
+TotalAmount decimal(12,2)
+);
+
+-- Create indexes for Order table 
+create index IndexOrderCustomerId on Orders(CustomerId);
+create index IndexOrderOrderDate on Orders(OrderDate);
+
+-- Create of Product table with id as Primary Key 
+Create table Product(
+Id Int Primary key,
+ProductName nvarchar(50),
+UnitPrice decimal(12,2),
+Package nvarchar(30),
+IsDiscontinued bit );
+
+-- Create of indexes for Product table
+create index IndexProductSupplierId on Product(Id);
+create index IndexProductName on Product(ProductName);
+
+-- Create of OrderItem table 
+Create table OrderItem(
+Id Int Primary key,
+OrderId int foreign key references Orders(Id),
+ProductId int foreign key references Product(Id),
+UnitPrice decimal(12,2),
+Quntity int); 
+
+-- Create of  indexes for OrderItem table
+create index IndexOrderItemOrderId on OrderItem(OrderId) ;
+create index IndexOrderItemProductId on OrderItem(ProductId) ;
