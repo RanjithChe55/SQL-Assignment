@@ -18,7 +18,7 @@ SELECT * FROM Employee
 group by DOJ
 having count(*)=1
 
---Display the employee details whose joined at recently
+--Display the Employee details whose joined at recently
 
 SELECT * FROM Employee
 group by DOJ
@@ -57,6 +57,6 @@ where CustomerId=
 GROUP BY CUSTOMERID
 HAVING MAX(CUSTOMERID)>0)
 
---Display the customerid whose name has substring ‘RA’
+--Display the customerid whose name has substring â€˜RAâ€™
 
 
