@@ -17,11 +17,11 @@ ON Customer(FirstName,LastName);
 --insert data into customer table
 
 INSERT INTO dbo.Customer(CustomerId,FirstName,LastName,City,Country,Phone)
-VALUES (1,'KORRAI','BHARGAV','VIZAG','INDIA','8639293390'),
-(2,'K','SHINNY','MUMBAI','INDIA','8639293390'),
-(3,'B','RAHUL','CHEENAI','INDIA','030-0074321'),
+VALUES (1,'RANJITH','KUMAR','CHITTOOR','INDIA','8639676280'),
+(2,'KORRA','SHINNY','MUMBAI','INDIA','8639293390'),
+(3,'BOB','RAHUL','CHENNAI','INDIA','030-0074321'),
 (4,'RAM','CHARN','BANGALORE','INDIA','7894561230'),
-(5,'MAHINDRA','DHONI','PUNE','INDIA','1234567890');
+(5,'MAHINDAR','DHONI','PUNE','INDIA','1234567890');
 
 
 INSERT INTO dbo.Customer(CustomerId,FirstName,LastName,City,Country,Phone)
