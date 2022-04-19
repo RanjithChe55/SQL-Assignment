@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
+
+namespace Assignment1._1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            string CS = @"data source = VMI-5G6G4N2\SQLEXPRESS;database = capgcsharp;integrated security = SSPI";
+            SqlConnection con = new SqlConnection(CS);
+            SqlCommand cmd = new SqlCommand("select WinningTeam from football where Status = 'Win'", con);
+            List<Football> listfootball = new List<Football>();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader(); // Executing the SQL query  
+            while (sdr.Read())
+            {
+                Football ft = new Football();
+                ft.WinningTeam = sdr["WinningTeam"].ToString();
+
+                listfootball.Add(ft);
+            }
+            GridView1.DataSource = listfootball;
+            GridView1.DataBind();
+        }
+    }
+    public class Football
+    {
+        public string WinningTeam { get; set; }
+    }
+}
